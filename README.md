@@ -16,6 +16,13 @@ Or clone the the module separately:
     cd modules
     git clone git://github.com/shadowhand/pdfview.git pdfview
 
+### Update DOMPDF
+
+    cd modules/pdfview
+    git submodule update --init
+
+### Configuration
+
 Edit `application/bootstrap.php` and add a the module:
 
     Kohana::modules(array(
