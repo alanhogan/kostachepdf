@@ -18,10 +18,16 @@ class View_PDF extends View {
 		// Render the HTML normally
 		$html = parent::render($file);
 
+		// Turn off strict errors, DOMPDF is stupid like that
+		$ER = error_reporting(~E_STRICT);
+
 		// Render the HTML to a PDF
 		$pdf = new DOMPDF;
 		$pdf->load_html($html);
 		$pdf->render();
+
+		// Restore error reporting settings
+		error_reporting($ER);
 
 		return $pdf->output();
 	}
